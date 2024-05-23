@@ -17,10 +17,12 @@
 		{% endblock %}
 	</head>
 	<body>
-		{% include "shared/_navbar_client.html.twig" %}
+		{% include "shared/_navbar.html.twig" %}
 		<div class="container pt-5">
 			{% include "shared/_flash.html.twig" %}
 			{% block body %}{% endblock %}
+
 		</div>
+		{% include "shared/_footer.html.twig" %}
 	</body>
 </html>
