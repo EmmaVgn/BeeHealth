@@ -12,6 +12,12 @@
 		</div>
 	</div>
 	<h2>Nos produits phares</h2>
-
+	<div class="row">
+		{% for p in products %}
+			<div class="col">
+				{% include "partials/_product_card.html.twig" %}
+			</div>
+		{% endfor %}
+	</div>
 
 {% endblock %}
