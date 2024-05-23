@@ -39,7 +39,7 @@ class Product
         /**
      * @var Collection<int, Images>
      */
-    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'images')]
+    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'images', orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
 
     public function __construct()
@@ -51,13 +51,6 @@ class Product
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -149,6 +142,8 @@ class Product
 
         return $this;
     }
+
+
 
     public function removeImage(Images $image): static
     {

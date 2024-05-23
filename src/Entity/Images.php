@@ -64,6 +64,12 @@ class Images
         return $this->imageName;
     }
 
+    public function __toString(): string
+    {
+        return $this->imageName;
+    }
+
+
     public function setImageName(string $imageName): static
     {
         $this->imageName = $imageName;
