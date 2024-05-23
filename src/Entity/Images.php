@@ -16,7 +16,7 @@ class Images
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Vich\UploadableField(mapping: 'ads', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]

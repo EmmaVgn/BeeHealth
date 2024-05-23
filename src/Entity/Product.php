@@ -2,15 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Trait\SlugTrait;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Trait\CreatedAtTrait;
+use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
+    use SlugTrait;
+    use CreatedAtTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -36,10 +41,6 @@ class Product
      */
     #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'images')]
     private Collection $images;
-
-
-    #[ORM\Column(options: ['default' => 'CURRENT_TIMESTAMP'])]
-    private ?\DateTimeImmutable $createdAt = null;
 
     public function __construct()
     {
