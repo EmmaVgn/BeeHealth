@@ -47,7 +47,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/produits', name: 'product_display')]
+    #[Route('/boutique', name: 'product_display')]
     public function display(ProductRepository $productRepository, Request $request): Response
     {
         $data = new SearchData;

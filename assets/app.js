@@ -19,8 +19,8 @@ import { Carousel } from "bootstrap";
 new Filter(document.querySelector('.js-filter'))
 
 const priceSlider = document.getElementById('price-slider');
-
-
+const kmsSlider = document.getElementById('kms-slider');
+const dateSlider = document.getElementById('date-slider');
 if (priceSlider) {
     const min = document.getElementById('minPrice');
     const max = document.getElementById('maxPrice');
@@ -51,6 +51,7 @@ if (priceSlider) {
         }
     })
 }
+i
 
 // Close alert message after 5 secondes
 const alert = document.querySelector('.alert')
