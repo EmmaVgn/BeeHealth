@@ -44,7 +44,10 @@ class ProductCrudController extends AbstractCrudController
             ->setTextAlign('left')
             ->setFormTypeOption('divisor', 100),
             IntegerField::new('stock', 'Stock du produit'),
-
+            CollectionField::new('images', 'Images')
+            ->setEntryType(ProductImageFormType::class)
+            ->setFormTypeOption('by_reference', false)
+            ->hideOnIndex(),
             AssociationField::new('category', 'Catégorie du produit'),
         ];
     }

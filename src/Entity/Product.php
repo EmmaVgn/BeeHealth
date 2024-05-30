@@ -39,13 +39,18 @@ class Product
         /**
      * @var Collection<int, Images>
      */
-    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'images', orphanRemoval: true, cascade: ['persist'])]
+    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'product', orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
 
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->images = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -137,7 +142,7 @@ class Product
     {
         if (!$this->images->contains($image)) {
             $this->images->add($image);
-            $image->setImages($this);
+            $image->setProduct($this);
         }
 
         return $this;
@@ -149,8 +154,8 @@ class Product
     {
         if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($image->getImages() === $this) {
-                $image->setImages(null);
+            if ($image->getProduct() === $this) {
+                $image->setProduct(null);
             }
         }
 
