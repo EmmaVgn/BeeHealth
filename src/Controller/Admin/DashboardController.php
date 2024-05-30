@@ -3,9 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Ad;
-use App\Entity\Category;
+use App\Entity\User;
 use App\Entity\Images;
 use App\Entity\Product;
+use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -38,6 +39,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Produits', 'fa-brands fa-forumbee', Product::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Images::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToRoute('Retour au site', 'fas fa-home', 'homepage');
     }
 }
