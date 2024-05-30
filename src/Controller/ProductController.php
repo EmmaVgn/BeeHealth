@@ -39,7 +39,7 @@ class ProductController extends AbstractController
         ]);
 
         if (!$product) {
-            throw $this->createNotFoundException("Le véhicule demandé n'existe pas");
+            throw $this->createNotFoundException("Le produit demandé n'existe pas");
         }
 
         return $this->render('product/show.html.twig', [

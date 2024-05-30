@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Images;
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Entity\Purchase;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -30,7 +31,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Symbnb');
+            ->setTitle('Bee Health');
     }
 
     public function configureMenuItems(): iterable
@@ -38,6 +39,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Produits', 'fa-brands fa-forumbee', Product::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class);
+        yield MenuItem::linkToCrud('Commandes', 'fa-solid fa-cart-shopping', Purchase::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Images::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToRoute('Retour au site', 'fas fa-home', 'homepage');

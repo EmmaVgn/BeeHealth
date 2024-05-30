@@ -12,7 +12,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Boutique en ligne</a>
+					<a class="nav-link" href="{{ path('product_display') }}">Boutique en ligne</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Conseils d'utilisations</a>
@@ -58,7 +58,7 @@
 						<a href="{{ path('security_login') }}" class="btn btn-success">Se connecter</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="btn btn-danger">M'inscrire</a>
+						<a href="{{ path('register') }}" class="btn btn-danger">M'inscrire</a>
 					</li>
 
 				{% endif %}
