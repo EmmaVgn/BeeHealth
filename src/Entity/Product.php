@@ -36,23 +36,24 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $category = null;
 
-    /**
-     * @var Collection<int, Images>
-     */
     #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'product', orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
 
-     /**
-     * @var Collection<int, PurchaseItem>
-     */
     #[ORM\OneToMany(targetEntity: PurchaseItem::class, mappedBy: 'product')]
     private Collection $purchaseItems;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, options: ['default' => 'CURRENT_TIMESTAMP'])]
+    private ?\DateTime $MDD = null;
+
+    #[ORM\Column]
+    private ?int $capacity = null;
 
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->images = new ArrayCollection();
         $this->purchaseItems = new ArrayCollection();
+        $this->MDD = new \DateTime();
     }
 
     public function __toString()
@@ -73,7 +74,6 @@ class Product
     public function setName(string $name): static
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -85,7 +85,6 @@ class Product
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -97,7 +96,6 @@ class Product
     public function setPrice(int $price): static
     {
         $this->price = $price;
-
         return $this;
     }
 
@@ -109,7 +107,6 @@ class Product
     public function setStock(int $stock): static
     {
         $this->stock = $stock;
-
         return $this;
     }
 
@@ -121,7 +118,6 @@ class Product
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
-
         return $this;
     }
 
@@ -133,13 +129,9 @@ class Product
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 
-        /**
-     * @return Collection<int, Images>
-     */
     public function getImages(): Collection
     {
         return $this->images;
@@ -151,28 +143,19 @@ class Product
             $this->images->add($image);
             $image->setProduct($this);
         }
-
         return $this;
     }
-
-
 
     public function removeImage(Images $image): static
     {
         if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
             if ($image->getProduct() === $this) {
                 $image->setProduct(null);
             }
         }
-
         return $this;
     }
 
-
-    /**
-     * @return Collection<int, PurchaseItem>
-     */
     public function getPurchaseItems(): Collection
     {
         return $this->purchaseItems;
@@ -184,19 +167,38 @@ class Product
             $this->purchaseItems->add($purchaseItem);
             $purchaseItem->setProduct($this);
         }
-
         return $this;
     }
 
     public function removePurchaseItem(PurchaseItem $purchaseItem): static
     {
         if ($this->purchaseItems->removeElement($purchaseItem)) {
-            // set the owning side to null (unless already changed)
             if ($purchaseItem->getProduct() === $this) {
                 $purchaseItem->setProduct(null);
             }
         }
+        return $this;
+    }
 
+    public function getMDD(): ?\DateTime
+    {
+        return $this->MDD;
+    }
+
+    public function setMDD(\DateTime $MDD): static
+    {
+        $this->MDD = $MDD;
+        return $this;
+    }
+
+    public function getCapacity(): ?int
+    {
+        return $this->capacity;
+    }
+
+    public function setCapacity(int $capacity): static
+    {
+        $this->capacity = $capacity;
         return $this;
     }
 }

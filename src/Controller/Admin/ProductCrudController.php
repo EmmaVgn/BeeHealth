@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Product;
 use App\Form\ProductImageFormType;
+use DateTime;
+use DateTimeImmutable;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
@@ -14,6 +16,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 
 class ProductCrudController extends AbstractCrudController
 {
@@ -44,6 +48,8 @@ class ProductCrudController extends AbstractCrudController
             ->setTextAlign('left')
             ->setFormTypeOption('divisor', 100),
             IntegerField::new('stock', 'Stock du produit'),
+            IntegerField::new('capacity', 'Capacité du produit'),
+            DateField::new('MDD', 'Date de péremption'),
             CollectionField::new('images', 'Images')
             ->setEntryType(ProductImageFormType::class)
             ->setFormTypeOption('by_reference', false)
