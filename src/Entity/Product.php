@@ -48,6 +48,27 @@ class Product
     #[ORM\Column]
     private ?int $capacity = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $boticalName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $partOfPlant = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $extractionMethod = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $culture = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $introduction = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $advise = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $precautions = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -199,6 +220,90 @@ class Product
     public function setCapacity(int $capacity): static
     {
         $this->capacity = $capacity;
+        return $this;
+    }
+
+    public function getBoticalName(): ?string
+    {
+        return $this->boticalName;
+    }
+
+    public function setBoticalName(string $boticalName): static
+    {
+        $this->boticalName = $boticalName;
+
+        return $this;
+    }
+
+    public function getPartOfPlant(): ?string
+    {
+        return $this->partOfPlant;
+    }
+
+    public function setPartOfPlant(string $partOfPlant): static
+    {
+        $this->partOfPlant = $partOfPlant;
+
+        return $this;
+    }
+
+    public function getExtractionMethod(): ?string
+    {
+        return $this->extractionMethod;
+    }
+
+    public function setExtractionMethod(string $extractionMethod): static
+    {
+        $this->extractionMethod = $extractionMethod;
+
+        return $this;
+    }
+
+    public function getCulture(): ?string
+    {
+        return $this->culture;
+    }
+
+    public function setCulture(string $culture): static
+    {
+        $this->culture = $culture;
+
+        return $this;
+    }
+
+    public function getIntroduction(): ?string
+    {
+        return $this->introduction;
+    }
+
+    public function setIntroduction(string $introduction): static
+    {
+        $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    public function getAdvise(): ?string
+    {
+        return $this->advise;
+    }
+
+    public function setAdvise(string $advise): static
+    {
+        $this->advise = $advise;
+
+        return $this;
+    }
+
+    public function getPrecautions(): ?string
+    {
+        return $this->precautions;
+    }
+
+    public function setPrecautions(string $precautions): static
+    {
+        $this->precautions = $precautions;
+
         return $this;
     }
 }

@@ -2,7 +2,7 @@
 	class="card mb-3 me-2">
 	{# Vérifie si le produit a des images et affiche la première image si elle existe #}
 	{% if p.images|length > 0 and p.images.first %}
-		<img src="{{ vich_uploader_asset(p.images.first, 'imageFile') }}" alt="Product Image" class="img-fluid">
+		<img src="{{ vich_uploader_asset(p.images.first, 'imageFile')|imagine_filter('miniature') }}" alt="Product Image" class="img-fluid">
 	{% else %}
 		<img src="path/to/default-image.jpg" alt="Default Product Image" class="img-fluid">
 	{% endif %}
