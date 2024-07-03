@@ -39,7 +39,7 @@
 							<div class="accordion-body">
 								<strong>{{ product.name }}
 								</strong>
-								{{ product.capacity }}
+								{{ product.description }}
 
 
 							</div>
@@ -55,7 +55,7 @@
 							<div class="accordion-body">
 								<strong>Nom botanique:
 								</strong>
-								{{ product.botanicalName }}
+								{{ product.boticalName }}
 								<br>
 								<strong>
 									Partie de la plante:
@@ -69,6 +69,7 @@
 									{{ product.name }}:
 								</strong>
 								{{ product.culture }}
+								<br>
 								<strong>Contenance:
 								</strong>
 								{{ product.capacity }}
@@ -89,11 +90,11 @@
 						<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 							<div class="accordion-body">
 								<strong>Conseils d'utilisation:</strong>
-								{{ product.use }}
+								{{ product.advise }}
+
 								<br>
 								<strong>Précautions</strong>
 								{{ product.precautions }}
-
 							</div>
 						</div>
 					</div>
@@ -102,7 +103,7 @@
 
 			</div>
 			<div class="col-md-4">
-				<div class="card">
+				<div class="">
 					<div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 						<h3 class="text-center">{{ product.name }}</h3>
 						<div class="features mt-2 d-flex">
@@ -127,7 +128,10 @@
 				</div>
 				<div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-					<h3>Laisses un avis</h3>
+					<p>
+						{{ product.introduction }}
+					</p>
+
 				</div>
 			</div>
 		</div>

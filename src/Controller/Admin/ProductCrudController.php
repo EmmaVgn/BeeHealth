@@ -43,6 +43,7 @@ class ProductCrudController extends AbstractCrudController
             FormField::addColumn(6),
             TextField::new('name', 'Nom du produit'),
             TextEditorField::new('description', 'Description du produit'),
+            TextEditorField::new('introduction','description courte'),
             MoneyField::new('price', 'Prix du produit')
             ->setCurrency('EUR')
             ->setTextAlign('left')
@@ -50,6 +51,12 @@ class ProductCrudController extends AbstractCrudController
             IntegerField::new('stock', 'Stock du produit'),
             IntegerField::new('capacity', 'Capacité du produit'),
             DateField::new('MDD', 'Date de péremption'),
+            TextField::new('boticalName', 'Nom botanique'),
+            TextField::new('partOfPlant', 'Partie de la plante'),
+            TextField::new('extractionMethod', 'Méthode d\'extraction'),
+            TextField::new('culture', 'mode de culture'),
+            TextEditorField::new('advise', 'Conseils d\'utilisation'),
+            TextEditorField::new('precautions', 'Précautions d\'utilisation'),
             CollectionField::new('images', 'Images')
             ->setEntryType(ProductImageFormType::class)
             ->setFormTypeOption('by_reference', false)
